@@ -20,6 +20,10 @@ app.get('/', (req, res) => {
    res.send('Hello World!')
 })
 
+import jwtcheck from './routes/JWT'
+app.use('/auth', jwtcheck);
+
+
 app.post('/login', (req, res) => {
    const query = "SELECT * FROM UserDetail WHERE UserName = '" + String(req.body.UserName) + "';"
    //console.log(query);

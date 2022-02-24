@@ -1,0 +1,1 @@
+export default secret_key = "Rajnish@123";
