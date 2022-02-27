@@ -26,8 +26,14 @@ const SignUp = require('./routes/signUp')
 app.use('/fuck', SignUp);
 
 
-const authroute = require("./routes/auth");
-app.use("/api/auth", authroute);
+const authRoute = require("./routes/auth");
+app.use("/api/auth", authRoute);
+
+const userRoute = require("./routes/user");
+app.use("/api/user", userRoute);
+
+const postRoute = require("./routes/post");
+app.use("/api/post", postRoute);
 
 
 
