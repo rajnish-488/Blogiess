@@ -1,0 +1,14 @@
+.login{
+   height: calc(100vh - 50px);
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   background: 
+   linear-gradient(rgba(0, 0, 0, 0.5),rgba(0,0,0,0.5)),
+    url("https://i.pinimg.com/originals/98/a2/fc/98a2fc3ef61a14eb651c0da71d851e1d.jpg");
+   background-size: cover;
+}
+
+.loginTitle{
+   
+}
