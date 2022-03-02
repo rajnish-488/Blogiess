@@ -1,43 +1,44 @@
-.login{
+.register{
    height: calc(100vh - 50px);
    display: flex;
    flex-direction: column;
    justify-content: center;
    background: 
    linear-gradient(rgba(255, 255, 255, 0.3),rgba(255,255,255,0.3)),
-    url("https://i.pinimg.com/originals/98/a2/fc/98a2fc3ef61a14eb651c0da71d851e1d.jpg");
+    url("https://www.skyfallblue.com/wp-content/uploads/2017/08/writing-great-blog-post.jpg");
    background-size: cover;
 
    align-items: center;
 }
 
-.loginTitle{
+.registerTitle{
     color: #000;
     text-align: center;
     font-size: 20px;
 }
 
 
-.loginForm{
-   margin-top: 20px;
+.registerForm{
+   margin-top: 70px;
    display: flex;
    flex-direction: column;
 }
 
-.loginForm>label{
+.registerForm>label{
    margin: 10px 0;
+   color: black;
 }
 
-.loginInput{
+.registerInput{
    padding: 10px;
    background-color: #fff;
    border: none;
 }
 
-.loginButton{
+.registerButton{
    margin: 20px;
    cursor: pointer;
-   background-color: lightcoral;
+   background-color: teal;
    border: none;
    color: #fff;
    border-radius: 10px;
@@ -45,14 +46,14 @@
 }
 
 
-.loginRegistration{
+.registerRegistration{
    position: absolute;
    top: 60px;
    right: 20px;
-   background-color: teal;
+   background-color:lightcoral;
    cursor: pointer;
    border: none;
    padding: 10px;
-   color: #000;
+   color: #fff;
    border-radius: 10px;
 }
