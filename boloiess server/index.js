@@ -3,7 +3,7 @@ const express = require('express');
 const port = 3300;
 const mongoose = require('mongoose');
 const dotenv = require("dotenv");
-
+const multer = require("multer");
 
 
 dotenv.config();
@@ -21,6 +21,22 @@ app.get('/', function (req, res) {
    res.send("Hello world!");
 });
 
+
+// code fot storring tge images into files
+const storage = multer.diskStorage({
+   destination: (req, file, cb) => {
+      cb(null, "images")
+   },
+   filename: (req, file, cb) => {
+      cb(null, req.body.name)
+   },
+});
+
+const upload = multer({ storage: storage });
+app.post("/api/upload", upload.single("file"), (req, res) => {
+   res.status(200).json("file uplaoded")
+})
+
 // calling of the all the routes in ./routs directory and perform action;
 const SignUp = require('./routes/signUp')
 app.use('/fuck', SignUp);
@@ -34,6 +50,9 @@ app.use("/api/user", userRoute);
 
 const postRoute = require("./routes/post");
 app.use("/api/post", postRoute);
+
+const catagoryRoute = require("./routes/catagory");
+app.use("/api/catagory", catagoryRoute);
 
 
 
