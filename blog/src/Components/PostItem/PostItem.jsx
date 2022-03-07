@@ -1,19 +1,26 @@
 import "./PostItem.css"
-
-const PostItem = () => {
+import { Link } from 'react-router-dom';
+const PostItem = ({ post }) => {
    return (
+
       <div className="postitem">
-         <img className="postitemImg"
-            src="https://media.sproutsocial.com/uploads/2017/01/Instagram-Post-Ideas.png" alt="" />
+         {post.photo ? (
+            <img className='singlePostImg' src={post.photo} alt="" />
+         ) : (
+            <img className='singlePostImg' src="https://salautomotive.in/wp-content/uploads/2017/01/no-image-available.jpg" alt="" />
+         )}
          <div className="postitemInfo">
             <div className="postitemCats">
                <span className="postitemcat">MUSIC</span>
                <span className="postitemcat">LIFE</span>
             </div>
-            <span className="postitemtitle">Lorem ipsum dolor sit. </span>
+            <Link to={`/post/${post._id}`} className="link">
+               <span className="postitemtitle">{post.title} </span>
+            </Link>
+
             <hr />
-            <p className="postitemPara">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non sapiente corporis autem doloremque molestias delectus necessitatibus repellendus recusandae atque nemo nam nisi, eaque quaerat error odio, ipsum, fugiat accusantium in.</p>
-            <span className="postitemDate"> 1 hour ago</span>
+            <p className="postitemPara">{post.desc}</p>
+            <span className="postitemDate"> {new Date(post.createdAt).toDateString()}</span>
          </div>
 
       </div>

@@ -1,16 +1,16 @@
 import PostItem from "../PostItem/PostItem";
 import "./Post.css";
 
-const Post = () => {
+const Post = ({ posts }) => {
    return (
       <div className="post">
-         <PostItem />
-         <PostItem />
-         <PostItem />
-         <PostItem />
-         <PostItem />
-         <PostItem />
-         <PostItem />
+
+         {
+            posts.map((p) => (
+               <PostItem post={p} />
+            ))
+         }
+
       </div>
    )
 }

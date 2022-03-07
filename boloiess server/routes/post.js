@@ -72,7 +72,7 @@ router.delete("/:id", async (req, res) => {
 //get post
 router.get("/:id", async (req, res) => {
    try {
-      const user = await User.findById(req.params.id);
+      const user = await Post.findById(req.params.id);
       const { password, ...others } = user._doc;
       res.status(200).json(others);
 
@@ -86,11 +86,13 @@ router.get("/:id", async (req, res) => {
 router.get("/", async (req, res) => {
    const username = req.query.user;
    const catagory = req.query.cat;
+   //console.log("getting the post request from client");
    try {
       let posts;
       if (username) {
          posts = await Post.find({ username: username })
       } else if (catagory) {
+
          posts = await Post.find({
             catagories: {
                $in: [catagory]

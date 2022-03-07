@@ -44,11 +44,12 @@
 
 }
 
-.sidebarListItem{
+.sidebarListItemqwer{
    display: inline-block;
    width: 50%;
    margin-top: 15px;
    cursor: pointer;
+   font-size: 20px;
    font-family: 'Redressed', cursive;
 }
 

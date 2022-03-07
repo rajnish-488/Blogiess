@@ -1,24 +1,47 @@
 import './SinglePost.css';
+import { useLocation } from "react-router";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const SinglePost = () => {
+   const [post, setPost] = useState({});
+   const location = useLocation();
+   const path = location.pathname.split('/')[2];
+
+   useEffect(() => {
+      const getPost = async () => {
+         const res = await axios.get("http://localhost:5000/api/posts/" + path);
+         //console.log(res.data);
+         setPost(res.data);
+      }
+      getPost();
+   }, [path])
    return (
       <div className='singlepost'>
          <div className="singlepostwrapper">
-            <img className='singlePostImg' src="https://media.sproutsocial.com/uploads/2017/01/Instagram-Post-Ideas.png" alt="" />
+            {post.photo ? (
+               <img className='singlePostImg' src={post.photo} alt="" />
+            ) : (
+               <img className='singlePostImg' src="https://salautomotive.in/wp-content/uploads/2017/01/no-image-available.jpg" alt="" />
+            )}
+
             <h1 className="singlePostTitle">
-               Lorem ipsum dolor sit amet.
+               {post.title}
                <div className="singlePostEdit">
                   <i className="singlePostIcon far fa-edit"></i>
                   <i className=" singlePostIcon far fa-trash-alt"></i>
                </div>
             </h1>
             <div className="singlePostInfo">
-               <span className='singlePostAuthor'> Author : <b>USERNAME</b></span>
-               <span className="singlePostDate"> 1hour ago</span>
+               <span className='singlePostAuthor'> Author :
+                  <Link to={`/?user=${post.username}`} className="link"><b>{post.username}</b></Link>
+
+               </span>
+               <span className="singlePostDate"> {new Date(post.createdAt).toDateString()}</span>
             </div>
             <p className='singlePostDesc'>
-               Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit odit facere distinctio voluptatem aperiam assumenda neque quisquam eius. Assumenda sapiente animi beatae hic eligendi placeat alias nam cumque atque facere?
-               Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur nesciunt eum at repellendus odio dolorem provident, illo culpa ullam. Obcaecati aut repellat quibusdam consequatur provident rerum alias eligendi iste est?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat eligendi ab ipsa aspernatur nihil quidem culpa commodi atque reprehenderit. Odio, suscipit. Necessitatibus temporibus praesentium, facilis sint ex aperiam ducimu Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, rerum porro modi provident, nihil doloremque necessitatibus nisi sequi atque perspiciatis amet perferendis. Tempore inventore esse assumenda doloribus commodi culpa sunt?
+               {post.desc}
             </p>
          </div>
       </div>

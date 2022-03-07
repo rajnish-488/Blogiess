@@ -1,6 +1,8 @@
 import './Header.css';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
+   const user = false;
    return (
       <div className='header'>
          <div className='topleft'>
@@ -9,17 +11,32 @@ const Header = () => {
          </div>
          <div className='topcenter'>
             <ul className='centeritemlist'>
-               <li className='centeritem'>HOME</li>
-               <li className='centeritem'>ABOUT</li>
-               <li className='centeritem'>CONTACT</li>
-               <li className='centeritem'>WRITE</li>
-               <li className='centeritem'>LOGOUT</li>
+               <li className='centeritem'>
+                  <Link to="/" className='link'>HOME</Link>
+               </li>
+               <li className='centeritem'><Link to="/" className='link'>ABOUT</Link></li>
+               <li className='centeritem'><Link to="/" className='link'>CONTACT</Link></li>
+               <li className='centeritem'><Link to="/write" className='link'>WRITE</Link></li>
+               <li className='centeritem'><Link to="/" className='link'>
+                  {user && "LOGOUT"}
+               </Link></li>
             </ul>
 
          </div>
          <div className='topright'>
-            <img className='rightimage'
-               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpSyb2E8WLINckZtc083LBatl12iFBLMi5zA&usqp=CAU" alt="" />
+            {
+               user ? (<img className='rightimage'
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpSyb2E8WLINckZtc083LBatl12iFBLMi5zA&usqp=CAU" alt="" />) : (<ul className='centeritemlist'><li className='centeritem'>
+                     <Link to="/login" className='link'>LOGIN</Link>
+                  </li>
+                     <li className='centeritem'>
+                        <Link to="/register" className='link'>Register</Link>
+                     </li></ul>)
+            }
+
+
+
+
             <i className="righticon fa-brands fa-searchengin"></i>
          </div>
       </div>

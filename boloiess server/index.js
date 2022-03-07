@@ -1,15 +1,16 @@
 //calling all the required dependencies;
 const express = require('express');
-const port = 3300;
+const port = 5000;
 const mongoose = require('mongoose');
 const dotenv = require("dotenv");
 const multer = require("multer");
-
+const cors = require("cors");
 
 dotenv.config();
 const app = express();
 // to used the json data;
 app.use(express.json());
+app.use(cors());
 // calling mongodb and connection to it.
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true });
 const con = mongoose.connection;
@@ -49,7 +50,7 @@ const userRoute = require("./routes/user");
 app.use("/api/user", userRoute);
 
 const postRoute = require("./routes/post");
-app.use("/api/post", postRoute);
+app.use("/api/posts", postRoute);
 
 const catagoryRoute = require("./routes/catagory");
 app.use("/api/catagory", catagoryRoute);
@@ -74,7 +75,7 @@ app.use("/api/catagory", catagoryRoute);
 
 // calling of the app;
 app.listen(port, () => {
-   console.log("....connected at port number 3300")
+   console.log("....connected at port number 5000")
 })
 
 
