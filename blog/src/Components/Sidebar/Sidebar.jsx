@@ -8,11 +8,11 @@ const Sidebar = () => {
    const [Cat, setCat] = useState([]);
 
    useEffect(() => {
-      const gstCat = async () => {
+      const getCat = async () => {
          const res = await axios.get("http://localhost:5000/api/catagory");
          setCat(res.data);
       }
-      gstCat();
+      getCat();
    }, [])
 
    return (

@@ -11,8 +11,12 @@ const PostItem = ({ post }) => {
          )}
          <div className="postitemInfo">
             <div className="postitemCats">
-               <span className="postitemcat">MUSIC</span>
-               <span className="postitemcat">LIFE</span>
+               {post.categories.map((c) => {
+                  <span className="postitemcat">{c.name}</span>
+               })}
+
+               {/* <span className="postitemcat">MUSIC</span>
+               <span className="postitemcat">LIFE</span> */}
             </div>
             <Link to={`/post/${post._id}`} className="link">
                <span className="postitemtitle">{post.title} </span>
